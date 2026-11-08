@@ -5,16 +5,21 @@ type AppButtonProps = ComponentProps<typeof Pressable> & {
   title: string;
 };
 
-export function AppButton({ disabled, style, title, ...props }: AppButtonProps) {
+export function AppButton({
+  disabled,
+  style,
+  title,
+  ...props
+}: AppButtonProps) {
   return (
     <Pressable
       accessibilityRole="button"
       disabled={disabled}
-      style={({ pressed }) => [
+      style={(state) => [
         styles.button,
-        pressed && styles.pressed,
+        state.pressed && styles.pressed,
         disabled && styles.disabled,
-        typeof style === "function" ? style({ pressed }) : style,
+        typeof style === "function" ? style(state) : style,
       ]}
       {...props}
     >

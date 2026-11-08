@@ -10,7 +10,11 @@ export function useLogin() {
     setIsLoading(true);
 
     try {
-      return await login(input);
+      const session = await login(input);
+      if (!session.token || !session.user.id) {
+        throw new Error("Login did not return a valid session.");
+      }
+      return session;
     } finally {
       setIsLoading(false);
     }

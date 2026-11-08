@@ -1,27 +1,15 @@
-import { StyleSheet, View } from "react-native";
-
-import { AppText } from "@/components/ui/AppText";
-
+import { AuthShell } from "../components/AuthShell";
 import { RegisterForm } from "../components/RegisterForm";
 
 export function RegisterScreen() {
   return (
-    <View style={styles.container}>
-      <AppText style={styles.title}>Create account</AppText>
+    <AuthShell
+      title="Make room"
+      accent="for growth."
+      chapter="02 / YOUR NEXT CHAPTER"
+      introduction="From your first seed to a world of possibilities."
+    >
       <RegisterForm />
-    </View>
+    </AuthShell>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    padding: 24,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: "700",
-    marginBottom: 24,
-  },
-});

@@ -10,7 +10,11 @@ export function useRegister() {
     setIsLoading(true);
 
     try {
-      return await register(input);
+      const session = await register(input);
+      if (!session.token || !session.user.id) {
+        throw new Error("Registration did not return a valid session.");
+      }
+      return session;
     } finally {
       setIsLoading(false);
     }

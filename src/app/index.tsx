@@ -1,15 +1,3 @@
-import { StyleSheet, Text, View } from "react-native";
+import { SplashScreen } from "@/features/launch/SplashScreen";
 
-export default function Index() {
-  return (
-    <View style={styles.container}>
-      <Text></Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1, alignItems: "center", justifyContent: "center",
-  },
-});
+export default SplashScreen;
