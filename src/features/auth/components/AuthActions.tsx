@@ -74,7 +74,7 @@ export function AuthError({ message }: { message: string | null }) {
 }
 
 export const formStyles = StyleSheet.create({
-  form: { gap: 17 },
+  form: { gap: 14 },
   heading: {
     fontSize: 23,
     fontWeight: "600",

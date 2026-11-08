@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* AuthField supplies a focus ring around the complete field, including icons. */
+input[id^="farmease-auth-input-"],
+textarea[id^="farmease-auth-input-"] {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+[id^="farmease-auth-field-"] [role="button"]:focus {
+  outline: none !important;
+}
