@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Pressable, TextInput, View, Text } from "react-native";
+import { Pressable, StyleSheet, TextInput, View, Text } from "react-native";
 import { Link, router } from "expo-router";
 
 import { useLogin } from "../hooks/useLogin";
@@ -88,6 +88,17 @@ export function LoginForm() {
         <AuthSubmit title="Log in" loading={isLoading} onPress={handleSubmit} />
       </View>
       <AuthSwitch />
+      <Link href="/(tabs)" replace asChild>
+        <Pressable
+          accessibilityRole="link"
+          style={StyleSheet.flatten([
+            formStyles.forgotLink,
+            { alignItems: "center" },
+          ])}
+        >
+          <Text style={formStyles.linkText}>Explore the demo farm ↗</Text>
+        </Pressable>
+      </Link>
     </View>
   );
 }

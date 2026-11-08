@@ -1,5 +1,1 @@
-import { EmptyState } from "@/components/ui/EmptyState";
-
-export default function ProfileScreen() {
-  return <EmptyState title="Profile" />;
-}
+export { ProfileScreen as default } from "@/features/dashboard/screens/ProfileScreen";
