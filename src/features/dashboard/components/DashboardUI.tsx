@@ -20,7 +20,10 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 
 import { farmColors as c, farmSerif } from "../theme";
 import { FarmIcon } from "./FarmIcon";
@@ -36,6 +39,7 @@ export function DashboardPage({
   accent?: string;
   eyebrow?: string;
 }) {
+  const insets = useSafeAreaInsets();
   const [entrance] = useState(() => new Animated.Value(0));
   useEffect(() => {
     let mounted = true;
@@ -67,7 +71,11 @@ export function DashboardPage({
     <SafeAreaView style={s.screen} edges={["top", "left", "right"]}>
       <StatusBar style="dark" />
       <ScrollView
-        contentContainerStyle={s.page}
+        contentContainerStyle={[
+          s.page,
+          // Let content pass beneath the floating dock, then scroll fully clear.
+          { paddingBottom: 58 + 6 + Math.max(insets.bottom, 8) + 24 },
+        ]}
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled"
       >

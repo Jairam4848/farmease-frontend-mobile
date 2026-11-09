@@ -1,7 +1,13 @@
 import { type Tabs } from "expo-router";
 import { type ComponentProps, useEffect, useRef, useState } from "react";
 import {
-  AccessibilityInfo, Animated, Easing, Pressable, StyleSheet, Text, View,
+  AccessibilityInfo,
+  Animated,
+  Easing,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -75,8 +81,14 @@ export function FarmTabBar({ state, navigation, descriptors }: TabBarProps) {
   }, [activeIndex, position, reduceMotion, slotWidth, width]);
 
   return (
-    <View style={[s.area, { paddingBottom: Math.max(insets.bottom, 8) }]}>
-      <View style={s.bar} accessibilityRole="tablist"
+    <View
+      pointerEvents="box-none"
+      style={[s.area, { paddingBottom: Math.max(insets.bottom, 8) }]}
+    >
+      <View
+        nativeID="farmease-tab-dock"
+        style={s.bar}
+        accessibilityRole="tablist"
         accessibilityLabel="Main navigation"
         onLayout={(event) => setWidth(event.nativeEvent.layout.width)}
       >
@@ -122,7 +134,7 @@ export function FarmTabBar({ state, navigation, descriptors }: TabBarProps) {
             >
               <FarmIcon
                 name={item.icon}
-                color={selected ? c.lime : "#718268"}
+                color={selected ? "#FFFFFF" : "#000000"}
                 size={19}
               />
               <Text style={[s.label, selected && s.selectedLabel]}>
@@ -137,19 +149,27 @@ export function FarmTabBar({ state, navigation, descriptors }: TabBarProps) {
 }
 
 const s = StyleSheet.create({
-  area: { backgroundColor: c.paper, paddingTop: 6, paddingHorizontal: 20 },
+  area: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "transparent",
+    paddingTop: 6,
+    paddingHorizontal: 20,
+  },
   bar: {
     flexDirection: "row",
     position: "relative",
     padding: DOCK_PADDING,
     borderWidth: DOCK_BORDER,
-    borderColor: "#DDE3D2",
+    borderColor: "rgba(255, 255, 255, 0.28)",
     borderRadius: 24,
-    backgroundColor: c.white,
+    backgroundColor: "transparent",
     width: "100%",
     maxWidth: 460,
     alignSelf: "center",
-    boxShadow: "0 5px 18px rgba(30, 55, 33, 0.08)",
+    boxShadow: "0 4px 16px rgba(30, 55, 33, 0.05)",
   },
   selection: {
     position: "absolute",
@@ -169,6 +189,6 @@ const s = StyleSheet.create({
     paddingVertical: 5,
   },
   pressed: { opacity: 0.6 },
-  label: { color: "#6D7C64", fontSize: 9, lineHeight: 12, fontWeight: "500" },
-  selectedLabel: { color: c.paper, fontWeight: "600" },
+  label: { color: "#000000", fontSize: 9, lineHeight: 12, fontWeight: "500" },
+  selectedLabel: { color: "#FFFFFF", fontWeight: "700" },
 });

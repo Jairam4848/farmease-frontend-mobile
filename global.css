@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+#farmease-tab-dock {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
 /* AuthField supplies a focus ring around the complete field, including icons. */
 input[id^="farmease-auth-input-"],
 textarea[id^="farmease-auth-input-"] {
